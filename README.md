@@ -1,5 +1,5 @@
 # model-turbostart
-Quick start your ML model with sklearn.
+Quick start your ML model development with sklearn.
 
 Define your own preprocessing pipeline and fit a model using preddefined estimators wth `GridSearchCV` as defined in `estimators.py`. 
 
@@ -40,5 +40,5 @@ train_estimators(estimators, X_train, y_train, X_test, y_test)
 
 After fitting, best estimator can be accessed using, 
 ```
-estimators[<estimator_name>: Optional["HistFradientBoost, RandomForest, ElasticNet]].best_estimator_.
+estimators[<estimator_name>: Optional["HistFradientBoost", "RandomForest", "ElasticNet"]].best_estimator_.
 ```
