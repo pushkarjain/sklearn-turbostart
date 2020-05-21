@@ -4,7 +4,7 @@ from typing import Dict, Tuple
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.metrics import mean_squared_error, median_absolute_error, r2_score
+from sklearn.metrics import mean_squared_error, median_absolute_error
 from sklearn.model_selection import GridSearchCV, train_test_split
 
 plt.style.use("seaborn-talk")
@@ -40,16 +40,13 @@ def train_estimators(
     for ax, (estimator_name, estimator) in zip(axes, estimators.items()):
         reg = estimator.fit(X_train, y_train)
         y_pred = reg.predict(X_test)
+        score = reg.score(X_test, y_test)
         print(f"Estimator: {estimator_name}")
         print(f"Training score: {reg.score(X_train, y_train):.3f}")
         print(f"Cross-val score: {reg.best_score_:.3f}")
-        print(f"Test score: {r2_score(y_test, y_pred):.3f}")
+        print(f"Test score: {score:.3f}")
         print(f"----------")
-        scores = r"$R^2$=%.3f, MAE=%.3f, MSE=%.3f" % (
-            r2_score(y_test, y_pred),
-            median_absolute_error(y_test, y_pred),
-            mean_squared_error(y_test, y_pred),
-        )
+        scores = f"$R^2$={score:.3f}, MAE={median_absolute_error(y_test, y_pred):.3f}, MSE={mean_squared_error(y_test, y_pred):.3f}"
         plot_prediction(
             y_test=y_test, y_pred=y_pred, ax=ax, scores=scores, name=estimator_name
         )

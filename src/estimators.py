@@ -37,10 +37,8 @@ def create_estimators(preprocessing):
     # HistGradientBoost
     param_grid = {
         "regressor__regressor__l2_regularization": [0.0, 0.1, 1.0],
-        #"regressor__regressor__learning_rate": [0.01, 0.1],
-        "regressor__regressor__max_depth": [5, 6, 7, 8, 15, 20, None],
+        "regressor__regressor__max_depth": [6, 15, 20, None],
         "regressor__regressor__max_iter": [100, 200, 300],
-        # "regressor__regressor__min_samples_leaf": [15, 20, 30, 50],
     }
     hgb_pipe = TransformedTargetRegressor(
         regressor=Pipeline(
