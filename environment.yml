@@ -1,0 +1,21 @@
+# conda env create -f environment.yml
+name: regression
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pytest
+  - pytest-watch
+  - pytest-cov
+  - pip
+  - jupyter
+  - pip:
+      - black==19.10b0
+      - pandas
+      - flake8
+      - matplotlib
+      - scikit-learn
+      - sklearn-pandas
+      - jupyter_contrib_nbextension
+      - jupyter_nbextensions_configurator
+      - isort
