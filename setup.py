@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="model_turbostart",
+    name="sklearn_turbostart",
     version="0.0.1",
     description="A package to quick start sklearn-based models",
     author="Pushkar Kumar Jain",
