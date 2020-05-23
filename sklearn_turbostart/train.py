@@ -165,9 +165,8 @@ def plot_permutation_importance(
         )
         log.info(columns)
         labels = [columns[i] for i in perm_sorted_idx]
-        if ax is not None:
-            fig, ax = plt.subplots(1, 1, figsize=(8, 5))
         ax.boxplot(
             result.importances[perm_sorted_idx].T, vert=False, labels=labels,
         )
+        ax.set_title(estimator_name)
     fig.tight_layout()

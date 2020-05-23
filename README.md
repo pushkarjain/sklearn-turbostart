@@ -42,3 +42,5 @@ After fitting, best estimator can be accessed using,
 ```
 estimators[<estimator_name>: Optional["HistFradientBoost", "RandomForest", "ElasticNet"]].best_estimator_.
 ```
+
+Check out `Quickstarter.ipynb` in `notebooks/`
