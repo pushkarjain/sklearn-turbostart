@@ -1,4 +1,4 @@
-# model-turbostart
+# sklearn_turbostart
 Quick start your ML model development with sklearn.
 
 Define your own preprocessing pipeline and fit a model using preddefined estimators wth `GridSearchCV` as defined in `estimators.py`. 
@@ -12,12 +12,12 @@ Currently defined regressors include
 Example
 
 ```
-from model_turbostart.estimators import create_estimators
-from model_turbostart.train import load_data, train_estimators
+from sklearn.compose import ColumnTransformer
+from sklearn_turbostart.estimators import create_estimators
+from sklearn_turbostart.train import load_data, train_estimators
 from sklearn.preprocessing import StandardScaler
 
-from sklearn.compose import ColumnTransformer
-
+# Load data
 X_train, y_train, X_test, y_test = load_data("../data/data.csv")
 
 # Preprocessing
