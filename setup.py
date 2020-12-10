@@ -10,7 +10,7 @@ setup(
     author_email="pushkarjain1991@utexas.edu",
     license="MIT",
     packages=find_packages(exclude=("notebooks")),
-    python_requires=">=3.8.2",
+    python_requires=">=3.6.8",
     install_requires=[
         "numpy",
         "matplotlib",

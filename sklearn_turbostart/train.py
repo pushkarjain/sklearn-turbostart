@@ -18,6 +18,8 @@ log = logging.getLogger(__name__)
 
 def load_data(
     data_path: str,
+    target: str="Y",
+    dataset = None
 ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Loads data from datapath. Performs train-test split and transforms response to log
 
@@ -29,16 +31,21 @@ def load_data(
     Returns:
         Train and test data
     """
-    df = pd.read_csv(data_path, sep=";")
+    if dataset == "vehicles":
+        df = pd.read_csv(data_path, index_col=0)
+        df = df[df[target] > 0]
+        df = df[df["odometer"].notnull()]
+    else:
+        df = pd.read_csv(data_path, sep=";")
     assert len(df) > 0
-    df["Y"] = df["Y"].apply(lambda x: np.log(x))
+    df[target] = df[target].apply(lambda x: np.log(1+x))
     log.info("Transforming Y to log(Y)")
     log.info("Splitting data as 80/20")
     df_train, df_test = train_test_split(df, test_size=0.2, random_state=2020)
-    X_train = df_train.drop("Y", axis=1)
-    y_train = df_train["Y"]
-    X_test = df_test.drop("Y", axis=1)
-    y_test = df_test["Y"]
+    X_train = df_train.drop(target, axis=1)
+    y_train = df_train[target]
+    X_test = df_test.drop(target, axis=1)
+    y_test = df_test[target]
     return X_train, y_train, X_test, y_test
 
 
